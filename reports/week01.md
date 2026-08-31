@@ -4,7 +4,7 @@ Tämän ympäristön tarkoitus on tutkia verkon toimintaa ja rakennetta. Ympäri
 
 ## 2. Verkkokaavio
 
-Lisää laatimasi verkkokaavio.
+![Topologia kaavio](images/t1_topology.png)
 
 ## 3. Laiteluettelo
 
@@ -38,6 +38,7 @@ Lisää laatimasi verkkokaavio.
 
 Pingaus ja traceroute client1 -> web1
 
+```
 $ docker exec -it clab-hamk-verkonhallinta-golden-client1 ping 10.10.20.101
 PING 10.10.20.101 (10.10.20.101) 56(84) bytes of data.
 64 bytes from 10.10.20.101: icmp_seq=1 ttl=62 time=0.112 ms
@@ -48,22 +49,23 @@ PING 10.10.20.101 (10.10.20.101) 56(84) bytes of data.
 --- 10.10.20.101 ping statistics ---
 4 packets transmitted, 4 received, 0% packet loss, time 3057ms
 
-
 $ docker exec -it clab-hamk-verkonhallinta-golden-client1 traceroute -n 10.10.20.101
 traceroute to 10.10.20.101 (10.10.20.101), 30 hops max, 60 byte packets
- 1  10.10.10.1  0.558 ms  0.497 ms  0.483 ms
- 2  10.255.12.2  0.463 ms  0.422 ms  0.398 ms
- 3  10.10.20.101  0.055 ms  0.019 ms  0.019 ms
-
+1 10.10.10.1 0.558 ms 0.497 ms 0.483 ms
+2 10.255.12.2 0.463 ms 0.422 ms 0.398 ms
+3 10.10.20.101 0.055 ms 0.019 ms 0.019 ms
+```
 
 Traceroute branch-client -> client1
+
+```
 $ docker exec -it clab-hamk-verkonhallinta-golden-branch-client traceroute -n 10.10.10.101
 traceroute to 10.10.10.101 (10.10.10.101), 30 hops max, 60 byte packets
- 1  10.10.30.1  0.554 ms  0.485 ms  0.467 ms
- 2  10.255.23.1  0.453 ms  0.417 ms  0.395 ms
- 3  10.255.12.1  0.371 ms  0.336 ms  0.312 ms
- 4  10.10.10.101  0.288 ms  0.252 ms  0.219 ms
-
+1 10.10.30.1 0.554 ms 0.485 ms 0.467 ms
+2 10.255.23.1 0.453 ms 0.417 ms 0.395 ms
+3 10.255.12.1 0.371 ms 0.336 ms 0.312 ms
+4 10.10.10.101 0.288 ms 0.252 ms 0.219 ms
+```
 
 ## 6. Yhteenveto
 
