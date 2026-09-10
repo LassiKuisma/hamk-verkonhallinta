@@ -90,7 +90,7 @@ topology:
         - sh -c 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y iproute2 iputils-ping curl openssh-server traceroute dnsutils tcpdump net-tools mtr-tiny nmap telnet wget'
         - ip addr add 10.10.10.101/24 dev eth1
         - ip route replace default via 10.10.10.1 dev eth1
-        - sh -c 'echo "nameserver 10.255.255.254" > /etc/resolv.conf'
+        - sh -c 'echo "nameserver 192.168.50.51" > /etc/resolv.conf'
         - bash /student-bootstrap/bootstrap.sh
 
     attacker:
@@ -118,7 +118,7 @@ topology:
         - sh -c 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y iproute2 iputils-ping curl openssh-server traceroute dnsutils tcpdump net-tools mtr-tiny nmap telnet wget'
         - ip addr add 10.10.20.101/24 dev eth1
         - ip route replace default via 10.10.20.1 dev eth1
-        - sh -c 'echo "nameserver 10.255.255.254" > /etc/resolv.conf'
+        - sh -c 'echo "nameserver 192.168.50.51" > /etc/resolv.conf'
         - bash /student-bootstrap/bootstrap.sh
 
     db1:
@@ -131,7 +131,7 @@ topology:
         - sh -c 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y iproute2 iputils-ping curl openssh-server traceroute dnsutils tcpdump net-tools mtr-tiny nmap telnet wget'
         - ip addr add 10.10.20.102/24 dev eth1
         - ip route replace default via 10.10.20.1 dev eth1
-        - sh -c 'echo "nameserver 10.255.255.254" > /etc/resolv.conf'
+        - sh -c 'echo "nameserver 192.168.50.51" > /etc/resolv.conf'
         - bash /student-bootstrap/bootstrap.sh
 
     ####################################################
@@ -147,7 +147,7 @@ topology:
         - sh -c 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y iproute2 iputils-ping openssh-server python3 traceroute dnsutils tcpdump net-tools mtr-tiny nmap telnet wget curl'
         - ip addr add 10.10.30.101/24 dev eth1
         - ip route replace default via 10.10.30.1 dev eth1
-        - sh -c 'echo "nameserver 10.255.255.254" > /etc/resolv.conf'
+        - sh -c 'echo "nameserver 192.168.50.51" > /etc/resolv.conf'
         - bash /configs/ssh-setup.sh
 
     ####################################################
