@@ -1,0 +1,38 @@
+---
+- name: Install nginx
+  hosts: web1
+  become: true
+
+  tasks:
+    - name: Update package cache
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Create basic HTML page
+      copy:
+        dest: /var/www/html/index.html
+        content: '<html><body>Hello, my name is {{ inventory_hostname }}</body></html>'
+
+    - name: Ensure nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+        # taskissa pitää olla "use: ...", muuten taski ei toimi
+        # https://forum.ansible.com/t/ansible-in-a-docker-container-service-is-in-unknown-state-error/2006
+        use: 'a magic spell'
+    
+    - name: Get website content
+      get_url:
+        url: "http://web1"
+        dest: /tmp/index.html
+    
+    - name: Ensure website contains server name
+      lineinfile:
+        path: /tmp/index.html
+        line: "web1"
